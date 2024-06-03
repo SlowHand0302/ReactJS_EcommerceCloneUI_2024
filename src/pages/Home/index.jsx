@@ -20,7 +20,7 @@ import SlideScrollable from '../../components/SlideScrollable';
 function HomePage() {
     return (
         <div className={clsx(styles.wrapper)}>
-            <section className={clsx(styles.topHome)}>
+            {/* <section className={clsx(styles.topHome)}>
                 <div className={clsx(styles.mainMenu)}>
                     <Catalog />
                 </div>
@@ -36,7 +36,7 @@ function HomePage() {
                         );
                     })}
                 </div>
-            </section>
+            </section> */}
             {Object.keys(brands).map((key, index) => {
                 return (
                     <Section key={index} type={key} data={brands[key]}>
@@ -60,7 +60,7 @@ function HomePage() {
                 );
             })}
 
-            {Object.keys(categories).map((type, index) => {
+            {/* {Object.keys(categories).map((type, index) => {
                 return (
                     <Section key={index} type={type} data={[]}>
                         <Categories data={categories[type]} type={type} />
@@ -103,7 +103,7 @@ function HomePage() {
                         );
                     })}
                 </div>
-            </Section>
+            </Section> */}
         </div>
     );
 }

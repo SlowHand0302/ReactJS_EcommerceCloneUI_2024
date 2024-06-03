@@ -23,7 +23,6 @@ const paymentIcons = {
     zalopay,
     alepay,
     fundiin,
-    cardsIcon,
 };
 
 const webIcons = {

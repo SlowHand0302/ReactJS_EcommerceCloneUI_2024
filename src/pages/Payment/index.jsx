@@ -1,16 +1,16 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import styles from './Payment.module.scss';
 import { IoArrowBack } from 'react-icons/io5';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import { formatCash, lowercaseFirstLetter } from '../../utils/helpers';
-import { STATE_FAIL, STATE_SUCCESS } from '../../constants';
 
 import InforTab from './InforTab';
 import PaymentTab from './PaymentTab';
-import AlertMsg from '../../components/AlertMsg';
 import useFormValidation from '../../hooks/useFormValidation';
 // dummy data
 import productItems from '../../constants/productItems';
@@ -26,7 +26,6 @@ function Payment(props) {
     const [showAllItem, setShowAllItem] = useState(false);
     const numbItemDisplay = showAllItem ? fetchedDummyData.length : 1;
     const [switchTab, setSwitchTab] = useState(true);
-    const [addAlertMsg, setAddAlertMsg] = useState();
     const [paymentInfor, setPaymentInfor] = useState({
         name: '',
         phoneNumber: '',
@@ -177,15 +176,15 @@ function Payment(props) {
             if (typeof Object.values(errors)[0] === 'object') {
                 for (const key in Object.values(errors)[0]) {
                     if (Object.values(errors)[0][key] !== null) {
-                        setAddAlertMsg({ type: STATE_FAIL, msg: `${Object.values(errors)[0][key]}` });
+                        toast.error(`${Object.values(errors)[0][key]}`);
                         break;
                     }
                 }
             } else {
-                setAddAlertMsg({ type: STATE_FAIL, msg: `${Object.values(errors)[0]}` });
+                toast.error(`${Object.values(errors)[0]}`);
             }
         } else {
-            setAddAlertMsg({ type: STATE_SUCCESS, msg: `THÔNG TIN ĐỦ` });
+            toast.success('THÔNG TIN ĐỦ');
             setSwitchTab(false);
         }
     };
@@ -272,7 +271,7 @@ function Payment(props) {
                     </div>
                 </div>
             </div>
-            <AlertMsg message={addAlertMsg} />
+            <ToastContainer />
         </>
     );
 }

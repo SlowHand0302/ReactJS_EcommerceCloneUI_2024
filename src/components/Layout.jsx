@@ -29,6 +29,7 @@ function Layout({ children }) {
             <div className={clsx(styles.container)}>
                 <div className={clsx(styles.content)}>{children}</div>
             </div>
+            <div style={{margin: 50}}></div>
             {goToTop && (
                 <button id={clsx(styles.backToTop)} onClick={handleScrollToTop}>
                     <IoIosArrowUp className={clsx(styles.icon)} />

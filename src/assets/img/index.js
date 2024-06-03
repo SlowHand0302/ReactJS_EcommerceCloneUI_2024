@@ -6,11 +6,13 @@ import pcComponentsImg from './pcComponentsCategories';
 import secondHandsImg from './secondhandsCategories';
 import techNewsImg from './techNews';
 import { paymentIcons, webIcons } from './icons';
-import logo from './logo.svg'
-import cartEmpty from './Cart-empty-v2.webp'
+import logo from './logo.svg';
+import smallLogo from './smallLogo.png';
+import cartEmpty from './Cart-empty-v2.webp';
 
 const images = {
     logo: logo,
+    smallLogo: smallLogo,
     slides: slides,
     banners: banners,
     products: productImgs,

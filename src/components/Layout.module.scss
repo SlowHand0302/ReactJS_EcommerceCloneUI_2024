@@ -4,7 +4,7 @@
     align-items: center;
     position: relative;
     width: 100%;
-    &.backgroundGray{
+    &.backgroundGray {
         background-color: #f4f6f8;
     }
 }
@@ -38,5 +38,11 @@
     // background-color: #ccc;
     .content {
         margin-top: calc(var(--layout-header-height) + 35px);
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .container {
+        width: 100%;
     }
 }

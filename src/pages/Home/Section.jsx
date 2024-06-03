@@ -48,24 +48,26 @@ function Section(props) {
     }
     return (
         <div className={clsx(styles.wrapper)}>
-            <div className={clsx(styles.header)}>
+            <div className={clsx(styles.container)}>
                 <h1>{title}</h1>
-                <div className={clsx(styles.producers)}>
-                    {producers.map((item, index) => {
-                        return (
-                            <Link
-                                key={index}
-                                to={
-                                    item.localeCompare('Xem tất cả')
-                                        ? type.concat('/', removeAccents(item).replaceAll(' ', '-'))
-                                        : type
-                                }
-                                className={clsx(styles.producer)}
-                            >
-                                {item}
-                            </Link>
-                        );
-                    })}
+                <div className={clsx(styles.header)}>
+                    <div className={clsx(styles.producers)}>
+                        {producers.map((item, index) => {
+                            return (
+                                <Link
+                                    key={index}
+                                    to={
+                                        item.localeCompare('Xem tất cả')
+                                            ? type.concat('/', removeAccents(item).replaceAll(' ', '-'))
+                                            : type
+                                    }
+                                    className={clsx(styles.producer)}
+                                >
+                                    {item}
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
             {children}

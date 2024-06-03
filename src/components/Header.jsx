@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // icon
 import { BiSearchAlt2 } from 'react-icons/bi';
@@ -17,6 +17,8 @@ import Catalog from './Catalog';
 
 function Header() {
     let { products, brand } = useParams();
+    const [imageSrc, setImageSrc] = useState(images.logo);
+
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
 
@@ -26,20 +28,35 @@ function Header() {
         setShowCatalogModal(!showCatalogModal);
     };
 
+    const updateImage = () => {
+        if (window.innerWidth < 820) {
+            setImageSrc(images.smallLogo);
+        } else {
+            setImageSrc(images.logo);
+        }
+    };
+
+    useEffect(() => {
+        updateImage(); // Set the initial image
+        window.addEventListener('resize', updateImage);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, []);
+
     return (
         <>
             <header className={clsx(styles.wrapper)}>
                 <nav className={clsx(styles.content)}>
                     <Link to="/">
-                        <img src={images.logo} alt="logo" />
+                        <img src={imageSrc} alt="logo" />
                     </Link>
-                    <div
-                        className={clsx(styles.menuButton, styles.btn)}
-                        onClick={handleShowCatalog}
-                    >
+                    <div className={clsx(styles.menuButton, styles.btn)} onClick={handleShowCatalog}>
                         <LuMenuSquare className={clsx(styles.icon)} /> Danh mục
                     </div>
-                    <div className={clsx(styles.localStoreButton, styles.btn)}>
+                    <div className={clsx(styles.headerItems, styles.btn)}>
                         <SlLocationPin className={clsx(styles.icon)} />
                         <div className={clsx(styles.localStoreContent)}>
                             <div className={clsx(styles.localStoreTitle)}>
@@ -49,49 +66,43 @@ function Header() {
                             <p>Hồ chí minh</p>
                         </div>
                     </div>
-                    <form>
-                        <div className={clsx(styles.searchBar)}>
-                            <button type="submit">
-                                <BiSearchAlt2 className={clsx(styles.icon)} />
-                            </button>
-                            <input className={clsx(styles.inputGroupBtn)} placeholder="Bạn cần tìm gì?"></input>
-                        </div>
+                    <form className={clsx(styles.searchBar)}>
+                        <button type="submit">
+                            <BiSearchAlt2 className={clsx(styles.icon)} />
+                        </button>
+                        <input className={clsx(styles.inputGroupBtn)} placeholder="Bạn cần tìm gì?"></input>
                     </form>
-                    <Link to="/">
-                        <div className={clsx(styles.contactButton)}>
-                            <HiOutlinePhone className={clsx(styles.icon)} />
+                    <Link to="/" className={clsx(styles.headerItems)}>
+                        <HiOutlinePhone className={clsx(styles.icon)} />
+                        <p>
+                            Gọi mua Hàng
+                            <br />
+                            1800.2097
+                        </p>
+                    </Link>
+                    <Link to="/" className={clsx(styles.headerItems)}>
+                        <SlLocationPin className={clsx(styles.icon)} />
+                        <div className={clsx(styles.localStoreContent)}>
                             <p>
-                                Gọi mua Hàng
-                                <br />
-                                1800.2097
+                                Cửa hàng <br /> gần bạn
                             </p>
                         </div>
                     </Link>
-                    <Link to="/">
-                        <div className={clsx(styles.localStoreButton)}>
-                            <SlLocationPin className={clsx(styles.icon)} />
-                            <div className={clsx(styles.localStoreContent)}>
-                                Cửa hàng <br /> gần bạn
-                            </div>
-                        </div>
-                    </Link>
-                    <Link to="/">
-                        <div className={clsx(styles.cartButton)}>
-                            <HiOutlineTruck className={clsx(styles.icon)} />
+                    <Link to="/" className={clsx(styles.headerItems)}>
+                        <HiOutlineTruck className={clsx(styles.icon)} />
+                        <p>
                             Tra cứu <br /> đơn hàng
-                        </div>
+                        </p>
                     </Link>
-                    <Link to="/cart">
-                        <div className={clsx(styles.cartButton)}>
-                            <SlBag className={clsx(styles.icon)} />
+                    <Link to="/cart" className={clsx(styles.headerItems)}>
+                        <SlBag className={clsx(styles.icon)} />
+                        <p>
                             Giỏ <br /> Hàng
-                        </div>
+                        </p>
                     </Link>
-                    <Link to="/login">
-                        <div className={clsx(styles.loginButton, styles.btn)}>
-                            <HiOutlineUserCircle className={clsx(styles.icon)} />
-                            Đăng nhập
-                        </div>
+                    <Link to="/login" className={clsx(styles.loginButton, styles.btn)}>
+                        <HiOutlineUserCircle className={clsx(styles.icon)} />
+                        Đăng nhập
                     </Link>
                 </nav>
             </header>
@@ -163,7 +174,7 @@ function Header() {
 
             {showCatalogModal ? (
                 <div className={clsx(styles.catalogDropDownModal)} onClick={handleShowCatalog}>
-                    <Catalog isDropDown={showCatalogModal}/>
+                    <Catalog isDropDown={showCatalogModal} />
                 </div>
             ) : null}
         </>

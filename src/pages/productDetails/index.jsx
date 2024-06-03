@@ -1,6 +1,8 @@
 import { useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // ultilities & styles
 import { formatCash } from '../../utils/helpers';
@@ -13,7 +15,6 @@ import { FaGift, FaCartPlus } from 'react-icons/fa6';
 // components
 import Modal from './Modal';
 import SlideScrollable from '../../components/SlideScrollable';
-import AlertMsg from '../../components/AlertMsg';
 
 // dummy data
 import productItems from '../../constants/productItems';
@@ -36,7 +37,6 @@ function ProductDetailsPage() {
     const [selectPrice, setSelectPrice] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [slideIndex, setSlideIndex] = useState(0);
-    const [addAlertMsg, setAddAlertMsg] = useState();
 
     const handleOnClickPrice = () => {
         setSelectPrice(!selectPrice);
@@ -152,9 +152,7 @@ function ProductDetailsPage() {
                                 </div>
                                 <div
                                     className={clsx(styles.btn)}
-                                    onClick={() =>
-                                        setAddAlertMsg({ type: STATE_SUCCESS, msg: 'Thêm vào giỏ hàng thành công' })
-                                    }
+                                    onClick={() => toast.success('Thêm vào giỏ hàng thành công')}
                                 >
                                     <FaCartPlus />
                                     <p>Thêm vào giỏ hàng</p>
@@ -209,7 +207,7 @@ function ProductDetailsPage() {
                     </div>
                 </Modal>
             ) : null}
-            {addAlertMsg && <AlertMsg message={addAlertMsg} />}
+            <ToastContainer />
         </>
     );
 }

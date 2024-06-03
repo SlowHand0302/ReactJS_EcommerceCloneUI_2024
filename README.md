@@ -8,7 +8,7 @@ involves studying an existing e-commerce site's layout and functionality and rep
 # Buiilt with:
 To run this project, make sure that your environment have all of these frameworks/libraries:
 
-[![My Skills](https://skillicons.dev/icons?i=react&perline=1)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,vite,sass)](https://skillicons.dev)
 
 # Installation:
 1. Clone the repo

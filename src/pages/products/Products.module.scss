@@ -38,8 +38,16 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        align-content: stretch;
         gap: 10px;
-        justify-content: flex-start;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .wrapper{
+        padding: 0 5px;
+        .bannerSlider{
+            display: none;
+        }
     }
 }

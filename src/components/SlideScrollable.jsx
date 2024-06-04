@@ -40,8 +40,9 @@ function SlideScrollable(props) {
     }, [slideIndex, slideShowItemLength, autoTranslate]);
 
     useEffect(() => {
+        let translatePercentByScreen = slideShowRef.current.clientWidth < 400 ? 100 : translatePercent;
         slideShowRef.current.scroll({
-            left: `${(slideIndex * slideShowRef.current.clientWidth * translatePercent) / 100}`,
+            left: `${(slideIndex * slideShowRef.current.clientWidth * translatePercentByScreen) / 100}`,
             behavior: 'smooth',
         });
         if (updateThumbnailIndex !== null) {

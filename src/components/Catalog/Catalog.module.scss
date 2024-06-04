@@ -2,7 +2,9 @@
     display: flex;
     height: 100%;
     cursor: pointer;
-
+    .test {
+        overflow-y: hidden;
+    }
     &.modal {
         position: absolute;
         left: calc(calc(100% - var(--layout-width-content)) / 2);
@@ -10,7 +12,7 @@
         max-height: 410px;
         // z-index: 989;
     }
-} 
+}
 
 .container {
     width: 100%;
@@ -55,5 +57,15 @@
 
     strong:hover {
         color: var(--primary-background-color);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper{
+        overflow-y: scroll;
+        height: 300px;
+        .container{
+            min-height: 400px;
+        }
     }
 }

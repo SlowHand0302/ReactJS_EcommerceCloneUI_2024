@@ -9,7 +9,7 @@ import CatalogChild from './CatalogChild';
 import catalogItems from '../../constants/catalogItems';
 
 function Catalog(props) {
-    const {isDropDown = false} = props;
+    const { isDropDown = false } = props;
 
     const [showCatalogChild, setShowCatalogChild] = useState(false);
     const [catalogItemHover, setCatalogItemHover] = useState(0);

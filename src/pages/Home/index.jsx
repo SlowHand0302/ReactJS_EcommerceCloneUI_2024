@@ -20,7 +20,7 @@ import SlideScrollable from '../../components/SlideScrollable';
 function HomePage() {
     return (
         <div className={clsx(styles.wrapper)}>
-            {/* <section className={clsx(styles.topHome)}>
+            <section className={clsx(styles.topHome)}>
                 <div className={clsx(styles.mainMenu)}>
                     <Catalog />
                 </div>
@@ -36,7 +36,7 @@ function HomePage() {
                         );
                     })}
                 </div>
-            </section> */}
+            </section>
             {Object.keys(brands).map((key, index) => {
                 return (
                     <Section key={index} type={key} data={brands[key]}>
@@ -44,6 +44,7 @@ function HomePage() {
                             slideShowItemLength={Math.round(productItems.length / 2 - 5)}
                             translatePercent={20}
                             scrollable={true}
+                            autoTranslate={false}
                             settingSlideLayout={{
                                 maxHeight: 926,
                                 display: 'flex',
@@ -60,7 +61,7 @@ function HomePage() {
                 );
             })}
 
-            {/* {Object.keys(categories).map((type, index) => {
+            {Object.keys(categories).map((type, index) => {
                 return (
                     <Section key={index} type={type} data={[]}>
                         <Categories data={categories[type]} type={type} />
@@ -73,14 +74,14 @@ function HomePage() {
                     {images.banners.paymentIncentive.map((banner, index) => {
                         return (
                             <Link key={index} to="/" className={clsx(styles.brandBannerImg)}>
-                                <img src={banner} alt="" />
+                                <img src={banner} alt="brandBannerImg" />
                             </Link>
                         );
                     })}
                 </div>
             </Section>
 
-            <Section type={''} data={[]} title={'chuyên trang thương hiệu'}>
+            <Section type={''} data={[]} title={'Chuyên trang thương hiệu'}>
                 <div className={clsx(styles.brandBanner)}>
                     {images.banners.brandIncentive.map((banner, index) => {
                         return (
@@ -92,7 +93,7 @@ function HomePage() {
                 </div>
             </Section>
 
-            <Section type={''} data={[]} title={'tin công nghệ'}>
+            <Section type={''} data={[]} title={'Tin công nghệ'}>
                 <div className={clsx(styles.techNews)}>
                     {images.techNews.map((news, index) => {
                         return (
@@ -103,7 +104,7 @@ function HomePage() {
                         );
                     })}
                 </div>
-            </Section> */}
+            </Section>
         </div>
     );
 }

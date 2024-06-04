@@ -25,3 +25,10 @@ body {
     font-weight: 400;
     width: 100%;
 }
+
+.limitNumbLine {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

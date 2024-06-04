@@ -217,16 +217,18 @@ function Payment(props) {
                                     <div className={clsx(styles.productItem)} key={index}>
                                         <img src={item.img} alt={item.name} />
                                         <div className={clsx(styles.info)}>
-                                            <div>{item.name}</div>
+                                            <div>
+                                                <p className={clsx(styles.limitNumbLine)}>{item.name}</p>
+                                            </div>
                                             <div>
                                                 <div>
-                                                    <span className={clsx(styles.newPrice)}>
+                                                    <p className={clsx(styles.newPrice)}>
                                                         {formatCash(item.newPrice)}
-                                                    </span>
+                                                    </p>
                                                     {item.oldPrice !== 0 ? (
-                                                        <span className={clsx(styles.oldPrice)}>
+                                                        <p className={clsx(styles.oldPrice)}>
                                                             {formatCash(item.oldPrice)}
-                                                        </span>
+                                                        </p>
                                                     ) : null}
                                                 </div>
                                                 <div>

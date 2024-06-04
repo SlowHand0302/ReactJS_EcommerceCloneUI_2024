@@ -2,8 +2,6 @@
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 20px;
-    // height: 400px;
-
     .banner {
         display: grid;
         gap: 10px;
@@ -16,15 +14,15 @@
         }
     }
 }
-.brandBanner {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
 
+.brandBanner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 0 10px;
     img {
-        max-width: 100%;
+        width: 100%;
         border-radius: 10px;
-        max-height: 125px;
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
     }
 }
@@ -32,7 +30,7 @@
 .techNews {
     display: flex;
     justify-content: space-between;
-
+    gap: 10px;
     .news {
         display: flex;
         flex-direction: column;
@@ -44,6 +42,7 @@
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.1), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
         text-decoration: none;
         transition: ease 500ms;
+        max-height: 100%;
 
         .newsImg {
             min-width: 100%;
@@ -57,6 +56,7 @@
             margin-top: 10px;
             padding: 0 5px;
             color: black;
+            font-size: 16px;
 
             overflow: hidden;
             display: -webkit-box;
@@ -66,6 +66,56 @@
 
         &:hover {
             transform: scale(1.05);
+        }
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .techNews {
+        padding: 0 5px;
+        overflow-x: scroll;
+        overflow: -moz-scrollbars-none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer/Edge */
+        scrollbar-width: none; /* Firefox */
+        -webkit-scrollbar-width: none; /* Chrome and Safari */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .topHome {
+        .banner {
+            display: none;
+        }
+    }
+    .brandBanner {
+        overflow-x: scroll;
+        grid-template-columns: repeat(2, 1fr);
+        a {
+            width: 100%;
+            img {
+                min-width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .techNews {
+        * {
+            min-width: 290px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .topHome {
+        display: block;
+        padding: 0 5px;
+        .mainMenu {
+            display: none;
         }
     }
 }
